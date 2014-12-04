@@ -10,7 +10,6 @@ struct teller_args {
 	Queue *served;
 };
 
-
 /* Global Variables */
 pthread_mutex_t mutex_line;
 pthread_mutex_t mutex_served;
@@ -22,16 +21,6 @@ int customer_time;
 void *teller(void *param);
 void *generator(void *param);
 void calculate_average_wait(Queue *queue);
-
-/* Queue Helper Functions */
-/*
-struct Queue *queue_create();
-struct Customer *line_queue_add(Queue *queue, int i);
-struct Customer *served_queue_add(Queue *queue, Customer *c);
-struct Customer *queue_pop(Queue *queue);
-*/
-
-
 
 int main(int argc, char *argv[]) {
 
@@ -81,8 +70,6 @@ int main(int argc, char *argv[]) {
 	}
 }
 
-
-
 /* Teller Function. */
 void *teller(void *args) {
 	unsigned int seed = time(NULL);
@@ -103,6 +90,7 @@ void *teller(void *args) {
 		}
 	}	
 }
+
 /* Custommer Generator Function */
 void *generator(void *queue) {
 	unsigned int seed = 12345;
@@ -117,6 +105,7 @@ void *generator(void *queue) {
 	}
 	
 }
+
 /* Helper Function to print ending information */
 void calculate_average_wait(Queue *queue) {
 	float average_wait = 0;
